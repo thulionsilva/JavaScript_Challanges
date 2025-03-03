@@ -1,0 +1,32 @@
+[
+  {
+    "ID": 1,
+    "Nome": "Pó Compacto Matte Faces",
+    "Preço": 44.50,
+    "Imagem": "/images/produto1.jpg",
+    "Descrição": "O Pó Compacto Matte Faces é perfeito para quem busca uma pele sequinha e sem brilho. Com textura fina e toque aveludado, ele ajuda a controlar a oleosidade da pele e a disfarçar imperfeições. Além disso, ele possui uma cobertura média e é ideal para ser usado no dia a dia. Disponível em 6 cores, ele é perfeito para todos os tons de pele.",
+    "Categoria": "Maquiagem",
+    "Subcategoria": "Pó Compacto",
+    "Marca": "Faces"
+  },
+  {
+    "ID": 2,
+    "Nome": "Luna Liberdade",
+    "Preço": 119.90,
+    "Imagem": "/images/produto2.jpg",
+    "Descrição": "A linha Luna Liberdade é uma coleção de produtos de maquiagem que celebra a diversidade e a beleza de cada indivíduo. Com uma ampla gama de cores e texturas, esses produtos são projetados para realçar a individualidade e a autenticidade de cada pessoa.",
+    "Categoria": "Maquiagem",
+    "Subcategoria": "Base",
+    "Marca": "Luna"
+  },
+  {
+    "ID": 3,
+    "Nome": "Kriska Shock",
+    "Preço": 119.90,
+    "Imagem": "/images/produto3.jpg",
+    "Descrição": "Kriska Shock é uma fragrância feminina que combina notas florais e frutadas com um toque de sensualidade. Com uma composição única e marcante, este perfume traz uma explosão de aromas que desperta os sentidos e deixa um rastro memorável por onde passa. Ideal para mulheres modernas e confiantes que buscam expressar sua personalidade através do perfume.",
+    "Categoria": "Perfumaria",
+    "Subcategoria": "Perfume",
+    "Marca": "Kriska"
+  }
+]
