@@ -16,6 +16,7 @@ function App() {
           <a className="menu-item" href="http://localhost:3000/sobre">Sobre</a>
           <a className="menu-item" href="http://localhost:3000/contato">Contato</a>
         </nav>
+
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/sobre" element={<Sobre />} />
