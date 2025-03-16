@@ -1,0 +1,10 @@
+const sqlite = require('sqlite3').verbose();
+const db = new sqlite.Database('carrinho.db');
+
+db.serialize(() => {
+    db.run("CREATE TABLE IF NOT EXISTS compras (id INTEGER PRIMARY KEY AUTOINCREMENT, user_name TEXT, product_id INTEGER, quantity INTEGER)");
+});
+
+db.run("INSERT INTO compras (user_name, product_id, quantity) VALUES (?, ?, ?)", ["John Doe", 1, 2]);
+
+module.exports = db;

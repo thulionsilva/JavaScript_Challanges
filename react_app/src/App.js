@@ -15,6 +15,7 @@ function App() {
           <a className="menu-item" href="http://localhost:3000/">Home</a>
           <a className="menu-item" href="http://localhost:3000/sobre">Sobre</a>
           <a className="menu-item" href="http://localhost:3000/contato">Contato</a>
+          <a className="menu-item" href="http://localhost:3000/carrinho">Carrinho</a>
         </nav>
 
         <Routes>

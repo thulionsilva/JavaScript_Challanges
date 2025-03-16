@@ -5,6 +5,17 @@ import produtos from "../produtos.json";
 function Produto() {
     const { id } = useParams();
     const produto = produtos.find(p => p.ID === parseInt(id));
+
+    const handleBuy = () => {
+        const response = fetch('http://localhost:3030/api/compras', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ user_name: "João", product_id: id, quantity: 1 }),
+        });
+        console.log(response);
+    }
     return (
         <div className="App-header">
 
@@ -14,7 +25,7 @@ function Produto() {
                     <h2>{produto.Nome}</h2>
                     <p>{produto.Descrição}</p>
                     <p>R$ {produto.Preço}</p>
-                    <button>Comprar</button>
+                    <button className="buy-button" onClick={handleBuy}>Comprar</button>
                 </div>
             </div>
 
