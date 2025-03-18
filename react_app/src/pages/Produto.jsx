@@ -12,7 +12,7 @@ function Produto() {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ user_name: "João", product_id: id, quantity: 1 }),
+            body: JSON.stringify({ user_name: "João", product_id: id}),
         });
         console.log(response);
     }

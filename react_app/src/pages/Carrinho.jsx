@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 
 function Carrinho() {
     const [data, setData] = useState(null);
+    const [refresh, setRefresh] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -16,13 +17,35 @@ function Carrinho() {
         };
 
         fetchData();
-    }, []);
+    }, [refresh]);
+
+    const refreshData = () => {
+        setRefresh(!refresh);
+    }
 
     return (
-        <div>
+        <div className='carrinho-lista'>
             <h1>Carrinho</h1>
+            <div className='cabecalho-item-carrinho'>
+                    
+                    <div style={{width: '325px', textAlign: 'left', fontSize: '15px'}}>
+                    <p>Item</p>
+                    </div >
+
+                    <div style={{width: '55px', textAlign: 'left', fontSize: '15px'}}>
+                    <p>Preço</p>
+                    </div>
+
+                    <div style={{width: '150px', textAlign: 'left', fontSize: '15px'}}>
+                    
+                    <p>Quantidade</p>
+
+                    </div>
+
+                </div>
+            
             {data && data.map((item) => (
-                <ItemCarrinho product_id={item.product_id} quantity={item.quantity} />
+                <ItemCarrinho json={item} page_refresh={refreshData}/>
             ))}
         </div>
     );
