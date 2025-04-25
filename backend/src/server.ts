@@ -1,8 +1,8 @@
-const express = require('express');
+import express, { Request, Response } from 'express';
 const app = express();
 
 // Basic GET request
-app.get('/api/products', (req, res) => {
+app.get('/api/products', (req: Request, res: Response) => {
     res.json({
         message: 'Success',
         data: [
