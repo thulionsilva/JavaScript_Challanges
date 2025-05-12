@@ -17,7 +17,7 @@ const AuthContext = createContext<UserType | undefined>(undefined);
 export const LoginContext: React.FC<{children: ReactNode}> = ({ children }) => {
     const [user, setUser] = useState(() => {
         const storedUser = localStorage.getItem('user');
-        return storedUser ? JSON.parse(storedUser) : 'admin';
+        return storedUser ? JSON.parse(storedUser) : null;
     }
     );
 

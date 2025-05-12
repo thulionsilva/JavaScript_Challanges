@@ -7,6 +7,7 @@ import Contato from './pages/Contato';
 import Carrinho from './pages/Carrinho';
 import Produto from './pages/Produto';
 import Login from './pages/Login';
+import Profile from './pages/Profile';
 
 function App() {
   return (
@@ -17,13 +18,14 @@ function App() {
           <a className="menu-item" href="http://localhost:3000/sobre">Sobre</a>
           <a className="menu-item" href="http://localhost:3000/contato">Contato</a>
           <a className="menu-item" href="http://localhost:3000/carrinho">Carrinho</a>
-          <a className="menu-item" href="http://localhost:3000/login">Login</a>
+          <a className="menu-item" href="http://localhost:3000/Profile">Perfil</a>
         </nav>
 
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/sobre" element={<Sobre />} />
           <Route path="/Login" element={<Login />} />
+          <Route path="/Profile" element={<Profile />} />
           <Route path="/contato" element={<Contato />} />
           <Route path="/carrinho" element={<Carrinho />} />
           <Route path="/produto/:id" element={<Produto />} />

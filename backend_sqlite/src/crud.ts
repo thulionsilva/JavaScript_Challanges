@@ -16,6 +16,13 @@ type LoginRequestBody = {
     password: string;
 }
 
+type UpdateRequestBody = {
+    username: string;
+    password: string;
+    email: string;
+    nome: string;
+}
+
 type ComprasRequestBody = {
     user_name: string;
     product_id: number;
@@ -40,6 +47,22 @@ app.post('/api/login', (req: Request<{}, {}, LoginRequestBody>, res: Response) =
     const {username, password}  = req.body;
     database.all(`SELECT user_name, password FROM store_users WHERE user_name = ? and password = ? limit 1`, [username, password], (err, rows) => {
     res.json(rows);});
+});
+
+app.get('/api/userData', (req: Request<{}, {}, {}, ComprasQuery>, res: Response) => {
+    if (!req.query.user_name) {
+        res.status(400).send('user_name is required');
+        return;
+    }
+    database.all(`SELECT user_name, email, nome FROM store_users WHERE user_name = ?`, [req.query.user_name], (err, rows) => {
+        res.json(rows);
+    });
+});
+
+app.post('/api/updateProfile', (req: Request<{}, {}, UpdateRequestBody>, res: Response) => {
+    const {username, password, email, nome}  = req.body;
+    database.run(`UPDATE store_users SET password = ?, email = ?, nome = ? WHERE user_name = ?`, [password, email, nome, username]);
+    res.send('Perfil atualizado com sucesso');
 });
 
 app.post('/api/compras', (req: Request<{}, {}, ComprasRequestBody>, res: Response) => {
