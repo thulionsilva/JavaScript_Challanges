@@ -1,5 +1,17 @@
 import Produto from "../components/Produto";
 import produtos from "../produtos.json";
+
+type ProdutoType = {
+  "ID": number;
+  "Nome": string,
+  "Preço": number,
+  "Imagem": string,
+  "Descrição": string,
+  "Categoria": string,
+  "Subcategoria": string,
+  "Marca": string
+  }
+
 function Home() {
     return (
       <div className="App">
@@ -9,7 +21,7 @@ function Home() {
             </div>
           <div className="produtos"> 
   
-            { produtos.map((produto) => (
+            { produtos.map((produto:ProdutoType) => (
               <Produto dados={produto} />
             ))}
             

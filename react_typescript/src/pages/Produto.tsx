@@ -1,15 +1,37 @@
 import { useParams } from 'react-router-dom';
 import "../App.css";
 import produtos from "../produtos.json";
-import { useAuth } from './LoginContext';
+import { useAuth } from '../contexts/LoginContext';
+
+type ParamsType = {
+    id: string;
+}
+
+type ProdutoType = {
+    "ID": number;
+    "Nome": string,
+    "Preço": number,
+    "Imagem": string,
+    "Descrição": string,
+    "Categoria": string,
+    "Subcategoria": string,
+    "Marca": string
+    }
 
 function Produto() {
-    const { id } = useParams();
-    const produto = produtos.find(p => p.ID === parseInt(id));
-    const { user } = useAuth();
 
-    const handleBuy = () => {
-        const response = fetch('http://localhost:3030/api/compras', {
+    const { id } = useParams<ParamsType>();
+    const { user } = useAuth();
+    const produtosTyped: ProdutoType[] = produtos as ProdutoType[];
+    if (!id) {
+        return <div>Produto não encontrado</div>;
+    }
+    const parsedId = parseInt(id, 10);
+    const produto = produtosTyped.find(p => p.ID === parsedId);
+
+
+    const handleBuy = async () => {
+        const response = await fetch('http://localhost:3030/api/compras', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -17,6 +39,10 @@ function Produto() {
             body: JSON.stringify({ user_name: user, product_id: id}),
         });
         console.log(response);
+        window.location.href = '/carrinho';
+    }
+    if (!produto) {
+        return <div>Produto não encontrado</div>;
     }
     return (
         <div className="App-header">

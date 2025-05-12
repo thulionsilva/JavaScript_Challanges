@@ -1,10 +1,17 @@
 import ItemCarrinho from '../components/ItemCarrinho';
-import { useAuth} from './LoginContext';
+import { useAuth } from '../contexts/LoginContext';
 import { useState, useEffect } from 'react';
 
+
 function Carrinho() {
-    const [data, setData] = useState(null);
-    const [refresh, setRefresh] = useState(false);
+    type ItemCarrinhoType = {
+        "user_name": string;
+        "product_id": number;
+        "last_added": number;
+        "quantity": number;
+    }
+    const [data, setData] = useState<ItemCarrinhoType[] | null>(null);
+    const [refresh, setRefresh] = useState<boolean>(false);
     const {user} = useAuth();
 
     useEffect(() => {
@@ -20,7 +27,7 @@ function Carrinho() {
         };
 
         fetchData();
-    }, [refresh]);
+    }, [refresh, user]);
 
     const refreshData = () => {
         setRefresh(!refresh);
@@ -47,7 +54,7 @@ function Carrinho() {
 
                 </div>
             
-            {data && data.map((item) => (
+            {data && data.map((item:ItemCarrinhoType) => (
                 <ItemCarrinho json={item} page_refresh={refreshData}/>
             ))}
         </div>
